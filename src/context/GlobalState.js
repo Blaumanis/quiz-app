@@ -44,14 +44,6 @@ export default ({ children }) => {
     setScore(0)
   }
 
-  useEffect(() => {
-    window.localStorage.setItem('score', JSON.stringify(score))
-  }, [score])
-
-  useEffect(() => {
-    const scoreValue = JSON.parse(window.localStorage.getItem('score'))
-    setScore(scoreValue)
-  }, [])
 
   const store = {
     currentQuestion: [currentQuestion, setCurrentQuestion],
