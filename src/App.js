@@ -1,25 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import Question from "./pages/Question";
+import Intro from "./pages/Intro";
+
+import { BrowserRouter,Routes,Route,Navigate } from 'react-router-dom';
+import React, {useContext} from 'react'
+import { GlobalContext } from './context/GlobalState'
 
 function App() {
+  const {showScore} = useContext(GlobalContext)
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+    <Routes>
+      <Route path="/" element={<Intro />}/>
+      <Route path="/questions" element={!showScore[0] ? <Question/> : <Navigate to="/"/>}/>
+    </Routes>
+    </BrowserRouter>
   );
 }
 
 export default App;
+
+
